@@ -1,0 +1,41 @@
+    <!-- header -->
+    <div class="header">
+        <div class="wrapper">
+            <div class="web-logo">
+                <h1><a href="<{:U('Index/Index/index')}>"><span class="glyphicon glyphicon-send"></span></a>南开好项目</h1>
+            </div>
+            <div class="navbar fl">
+                <ul>
+                    <li><a  href="<{:U('Nankai/Index/index')}>">首页</a></li>
+                   
+                   <li> <foreach name="cats" item="cats">
+                            <li>
+                                <a href="<{:U('Nankai/List/index', array('catsid'=>$cats['id']))}>"><{$cats.name}></a>
+                            </li>
+                            <if condition="count($cats['children']) gt 0">
+                                <ul class="pop-up-wrapper">
+                                <foreach name="$cats['children']" item='vo'>
+                                <li>
+                                    <a href="<{:U('Nankai/List/index', array('catsid'=>$vo['id']))}>"></a>
+                                        <{$vo.name}>
+                                    </a>
+                                </li>
+                                </foreach>
+                            </ul>
+                            </if>
+                    </li>
+                    </foreach>
+                </ul>
+            </div>
+            <div class="navbar fr">
+                <div class="login fl">
+                    <a href="javascript:;" class="nav-btn" id="nav-btn-login">登录</a>
+                </div>
+                <div class="line fl"></div>
+                <div class="reg fr">
+                    <a href="javascript:;" class="nav-btn" id="nav-btn-reg">注册</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- header end -->
