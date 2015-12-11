@@ -12,6 +12,7 @@ class CommonAction extends Action
 		//全局首页，用户个人中心导航分类展示
 		$cats=M('Category')->where('isverify=1')->order('sort asc')->select();
 		$cats = list2layer($cats, 0);
+		// dump($cats);
 		$this->assign('cats',$cats);
 							
 	}

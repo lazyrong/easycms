@@ -27,6 +27,20 @@
 <body>
     <!-- header -->
         <!-- header -->
+    <script>
+    $(function() {
+        $("li").hover(function() {
+                if( $(this).children("ul").length > 0 ) {
+                    $(this).children("ul").addClass('pop');
+                    }
+            },
+            function() {
+                 if( $(this).children().length > 0 ) {
+                    $(this).children("ul").removeClass('pop');
+                    }
+            });
+    })
+    </script>
     <div class="header">
         <div class="wrapper">
             <div class="web-logo">
@@ -36,17 +50,20 @@
                 <ul>
                     <li><a  href="<?php echo U('Nankai/Index/index');?>">首页</a></li>
                    
-                   <li> <?php if(is_array($cats)): foreach($cats as $key=>$cats): ?><li>
-                                <a href="<?php echo U('Nankai/List/index', array('catsid'=>$cats['id']));?>"><?php echo ($cats["name"]); ?></a>
-                            </li>
-                            <?php if(count($cats['children']) > 0): ?><ul class="pop-up-wrapper">
-                                <?php if(is_array($$cats['children'])): foreach($$cats['children'] as $key=>$vo): ?><li>
-                                    <a href="<?php echo U('Nankai/List/index', array('catsid'=>$vo['id']));?>"></a>
-                                        <?php echo ($vo["name"]); ?>
-                                    </a>
+                   <?php if(is_array($cats)): foreach($cats as $key=>$cats): ?><li>
+                                <a <?php if((count($cats['children']) > 0)): ?>href='<?php echo U('Nankai/List/index', array('catsid'=>$cats['children'][0]['id']));?>'
+
+<?php else: ?>
+href='<?php echo U('Nankai/List/index', array('catsid'=>$cats['id']));?>'<?php endif; ?>
+                                >
+                                <?php echo ($cats["name"]); ?></a>
+                            <?php if((count($cats['children']) > 0)): ?><ul class="pop-up-wrapper pop-up">
+                                <?php if(is_array($cats['children'])): foreach($cats['children'] as $key=>$vo): ?><li>
+                                    <a href="<?php echo U('Nankai/List/index', array('catsid'=>$vo['id']));?>"><?php echo ($vo['name']); ?></a>
+
                                 </li><?php endforeach; endif; ?>
-                            </ul><?php endif; ?>
-                    </li><?php endforeach; endif; ?>
+                                </ul><?php endif; ?>
+                            </li><?php endforeach; endif; ?>
                 </ul>
             </div>
             <div class="navbar fr">
@@ -74,13 +91,14 @@
                     <a href="#" class="fr" style="color:#4cc"> +MORE</a>
                 </div>
                 <ul class="news-list">
-                    <li class="first-child"><a target="_blank" href="#">苹果或将在明年春节前引入Apple Pay电子支付服务!</a></li>
+                    <li class="first-child"><a target="_blank" href="#">苹果或将在明年春节前引入Apple</a></li>
                     <li class=""><a target="_blank"  href="#">苹果或将在明年春节电子支付服务!</a></li>
-                    <li class=""><a href="#">苹果或将在明年春节前引入Apple Pay电子支付服务!</a></li>
-                    <li class=""><a target="_blank" href="#">苹果或将在明年春节前引入Apple Pay电子支付服务!</a></li>
-                    <li class=""><a target="_blank" href="#">苹果或将在明年春节前引入Apple Pay电子支付服务!</a></li>
-                    <li class=""><a target="_blank" href="#">苹果或将在明年春节前引入Apple Pay电子支付服务!</a></li>
-                    <li class=""><a target="_blank" href="#">苹果或将在明年春节前引入Apple Pay电子支付服务!</a></li>
+                    <li class=""><a href="#">苹果或将在明年春 Pay电子支付服务!</a></li>
+                    <li class="first-child"><a target="_blank" href="#">苹果或将在明年春节前引入Apple</a></li>
+                    <li class=""><a target="_blank"  href="#">苹果或将在明年春节电子支付服务!</a></li>
+                    <li class=""><a href="#">苹果或将在明年春 Pay电子支付服务!</a></li>
+                                        <li class=""><a href="#">苹果或将在明年春 Pay电子支付服务!</a></li>
+
                 </ul>
             </div>
             <div class="fr banner-wrapper">

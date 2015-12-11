@@ -10,6 +10,14 @@ class ListAction extends CommonAction
 		$catsid=I('catsid','','intval');
 		$cats=M('Category')->find($catsid);
 		$this->assign('catName',$cats['name']);
+
+		//左侧菜单
+		$pid = $cats['pid'];
+		if ( intval($pid,10) > 0) {
+			$menu = M('Category')->where("pid=$pid")->order('sort asc')->select();
+			$this->assign('menu',$menu);
+		}
+
 		//数据分页
 		import('ORG.Util.Page');// 导入分页类
    		$count=M('article')->where("tid=$catsid and islock=0")->count();//获取数据的总数

@@ -27,6 +27,20 @@
 <body>
     <!-- header -->
           <!-- header -->
+    <script>
+    $(function() {
+        $("li").hover(function() {
+                if( $(this).children("ul").length > 0 ) {
+                    $(this).children("ul").addClass('pop');
+                    }
+            },
+            function() {
+                 if( $(this).children().length > 0 ) {
+                    $(this).children("ul").removeClass('pop');
+                    }
+            });
+    })
+    </script>
     <div class="header">
         <div class="wrapper">
             <div class="web-logo">
@@ -35,12 +49,21 @@
             <div class="navbar fl">
                 <ul>
                     <li><a  href="<?php echo U('Nankai/Index/index');?>">首页</a></li>
-                    <?php if(is_array($cats)): foreach($cats as $key=>$cats): ?><li>
-                                <a href="<?php echo U('Nankai/List/index', array('catsid'=>$cats['id']));?>"><?php echo ($cats["name"]); ?></a>
-                            </li>
+                   
+                   <?php if(is_array($cats)): foreach($cats as $key=>$cats): ?><li>
+                                <a <?php if((count($cats['children']) > 0)): ?>href='<?php echo U('Nankai/List/index', array('catsid'=>$cats['children'][0]['id']));?>'
 
-                    <li>
-                    </li><?php endforeach; endif; ?>
+<?php else: ?>
+href='<?php echo U('Nankai/List/index', array('catsid'=>$cats['id']));?>'<?php endif; ?>
+                                >
+                                <?php echo ($cats["name"]); ?></a>
+                            <?php if((count($cats['children']) > 0)): ?><ul class="pop-up-wrapper pop-up">
+                                <?php if(is_array($cats['children'])): foreach($cats['children'] as $key=>$vo): ?><li>
+                                    <a href="<?php echo U('Nankai/List/index', array('catsid'=>$vo['id']));?>"><?php echo ($vo['name']); ?></a>
+
+                                </li><?php endforeach; endif; ?>
+                                </ul><?php endif; ?>
+                            </li><?php endforeach; endif; ?>
                 </ul>
             </div>
             <div class="navbar fr">
@@ -62,10 +85,7 @@
     <div class="container">
         <div class="box-aside fl">
             <ul>
-                <li class="active"><a href="javascript:void(0)">创投学院 </a></li>
-                
-                <li><a href="javascript:void(0)">媒体资讯 </a></li>
-
+            <?php if(is_array($menu)): foreach($menu as $key=>$m): ?><li <?php if($catName == $m['name']): ?>class="active"<?php endif; ?>><a href="<?php echo U('Nankai/List/index',array('catsid'=>$m['id']));?>"><?php echo ($m["name"]); ?></a></li><?php endforeach; endif; ?>
             </ul>
             <h2>关注我们</h2>
             <hr style="color:#E5E5E5">
@@ -80,7 +100,7 @@
     <?php if(is_array($list)): foreach($list as $key=>$list): ?><!-- 文章 -->
                 <div class="article-unit">
                     <div class="article-info">
-                        <a href="#" class="">创投学院</a>
+                        <a href="__SELF__" class=""><?php echo ($catName); ?></a>
                         <span><?php echo (date("Y-m-d",$list["pubtime"])); ?></span>
                     </div>
                     <div class="article-brief">

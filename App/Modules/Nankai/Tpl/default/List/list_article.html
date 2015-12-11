@@ -34,10 +34,9 @@
     <div class="container">
         <div class="box-aside fl">
             <ul>
-                <li class="active"><a href="javascript:void(0)">创投学院 </a></li>
-                
-                <li><a href="javascript:void(0)">媒体资讯 </a></li>
-
+            <foreach name="menu" item="m">
+                <li <if condition="$catName eq $m['name']"> class="active" </if>><a href="<{:U('Nankai/List/index',array('catsid'=>$m['id']))}>"><{$m.name}></a></li>
+            </foreach>
             </ul>
             <h2>关注我们</h2>
             <hr style="color:#E5E5E5">
@@ -53,7 +52,7 @@
                 <!-- 文章 -->
                 <div class="article-unit">
                     <div class="article-info">
-                        <a href="#" class="">创投学院</a>
+                        <a href="__SELF__" class=""><{$catName}></a>
                         <span><{$list.pubtime|date="Y-m-d",###}></span>
                     </div>
                     <div class="article-brief">

@@ -1,4 +1,18 @@
     <!-- header -->
+    <script>
+    $(function() {
+        $("li").hover(function() {
+                if( $(this).children("ul").length > 0 ) {
+                    $(this).children("ul").addClass('pop');
+                    }
+            },
+            function() {
+                 if( $(this).children().length > 0 ) {
+                    $(this).children("ul").removeClass('pop');
+                    }
+            });
+    })
+    </script>
     <div class="header">
         <div class="wrapper">
             <div class="web-logo">
@@ -8,22 +22,27 @@
                 <ul>
                     <li><a  href="<{:U('Nankai/Index/index')}>">首页</a></li>
                    
-                   <li> <foreach name="cats" item="cats">
+                   <foreach name="cats" item="cats">
                             <li>
-                                <a href="<{:U('Nankai/List/index', array('catsid'=>$cats['id']))}>"><{$cats.name}></a>
-                            </li>
-                            <if condition="count($cats['children']) gt 0">
-                                <ul class="pop-up-wrapper">
-                                <foreach name="$cats['children']" item='vo'>
+                                <a <if condition="(count($cats['children']) gt 0)"> 
+href='<{:U('Nankai/List/index', array('catsid'=>$cats['children'][0]['id']))}>'
+
+<else />
+href='<{:U('Nankai/List/index', array('catsid'=>$cats['id']))}>'
+                                </if>
+                                >
+                                <{$cats.name}></a>
+                            <if condition="(count($cats['children']) gt 0)">
+                                <ul class="pop-up-wrapper pop-up">
+                                <foreach name="cats['children']" item="vo">
                                 <li>
-                                    <a href="<{:U('Nankai/List/index', array('catsid'=>$vo['id']))}>"></a>
-                                        <{$vo.name}>
-                                    </a>
+                                    <a href="<{:U('Nankai/List/index', array('catsid'=>$vo['id']))}>"><{$vo['name']}></a>
+
                                 </li>
                                 </foreach>
-                            </ul>
+                                </ul>
                             </if>
-                    </li>
+                            </li>
                     </foreach>
                 </ul>
             </div>

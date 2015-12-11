@@ -23,8 +23,8 @@ hr { color:#fff;}
  */
 .header {height:70px;background: #434f81; line-height:70px; font-size:16px; color:#ffffff;}
 .wrapper {width:1220px; margin:0 auto; position:relative;}
-.web-logo {float:left; margin:0; padding:0; padding-right:40px;}
-.navbar li{float: left; position: relative; padding:0 10px; font-size: 18px; font-weight: bold;}
+.web-logo {float:left; margin:0; padding:0; padding-right:80px;}
+.navbar li{float: left; position: relative; padding:0 15px; font-size: 18px; font-weight: bold;}
 .navbar li a {color:#ffffff;}
 .navbar li a:hover {color:#;}
 .navbar span {margin:0; padding:0; background: url(images/vl.png) 0 0 no-repeat;}
@@ -102,7 +102,9 @@ content: " ";
 }
 .head-title a {line-height:38px;}
 .news-list {
-        margin-top:20px;
+        margin-top:10px;
+        margin-left:45px;
+        max-width:310px;
 }
 
 .news-list li{
@@ -120,6 +122,8 @@ display: inline-block;
 padding-left: 20px;
 border-left:5px solid #4C9ED9;
 }
+
+.banner-wrapper{margin-right:45px;}
 /**
  * slider
  * 
