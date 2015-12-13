@@ -28,16 +28,19 @@ class ListAction extends CommonAction
 		$this->assign('show',$show);
 		$this->assign('count',$count);
 		$this->assign('list',$articles);
-		//侧栏的数据分配
-		$sidebar1=M('Article')->where("tid=$catsid and ispush=1 and islock=0")->order('approval desc')->limit('5')->select();
-		$sidebar2=M('Article')->where("tid=$catsid and ispush=1 and islock=0")->order('opposition desc')->limit('5')->select();
-		$sidebar3=M('Article')->where("tid=$catsid and ispush=1 and islock=0")->order('rand()')->limit('5')->select();
-		//赞多到少
-		$this->assign('sidebar1',$sidebar1);
-		//赞少到多
-		$this->assign('sidebar2',$sidebar2);
-		//随机5篇
-		$this->assign('sidebar3',$sidebar3);
-		$this->display('list_article');
+
+		// $urlName = "list".$catsid;
+		// $this->buildHtml($urlName,'','list_article','utf8');	
+		switch($cats['modelid']) {
+			case 0:
+				$this->display('list_article');
+				break;
+			case 1:
+				$this->display('list_card');
+				break;
+			case 2:
+				$this->display('list_about');
+				break;
+		}
 	}
 }

@@ -32,7 +32,7 @@ href='<{:U('Nankai/List/index', array('catsid'=>$cats['id']))}>'
                                 </if>
                                 >
                                 <{$cats.name}></a>
-                            <if condition="(count($cats['children']) gt 0)">
+                            <if condition="(count($cats['children']) gt 1)">
                                 <ul class="pop-up-wrapper pop-up">
                                 <foreach name="cats['children']" item="vo">
                                 <li>

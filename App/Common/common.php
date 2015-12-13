@@ -184,3 +184,11 @@ function list2layer($cats, $pid) {
 	}
 	return $arr;
 }
+
+	//从栏目返回子栏目的id数组
+	function getChildrenId($catsid) {
+		$arr = array();
+		$condition['pid']=$catsid;
+		$arr = M('Category')->where($condition)->getField('id',true);
+		return $arr;
+	}

@@ -57,7 +57,7 @@
 href='<?php echo U('Nankai/List/index', array('catsid'=>$cats['id']));?>'<?php endif; ?>
                                 >
                                 <?php echo ($cats["name"]); ?></a>
-                            <?php if((count($cats['children']) > 0)): ?><ul class="pop-up-wrapper pop-up">
+                            <?php if((count($cats['children']) > 1)): ?><ul class="pop-up-wrapper pop-up">
                                 <?php if(is_array($cats['children'])): foreach($cats['children'] as $key=>$vo): ?><li>
                                     <a href="<?php echo U('Nankai/List/index', array('catsid'=>$vo['id']));?>"><?php echo ($vo['name']); ?></a>
 
@@ -107,35 +107,15 @@ href='<?php echo U('Nankai/List/index', array('catsid'=>$cats['id']));?>'<?php e
                 <div id="playBox">
                     <div class="pre"></div>
                     <div class="next"></div>
-                    <div class="smalltitle">
-                        <ul>
-                            <li class="thistitle"></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
+                    <div class="smalltitle" >
+                        <ul style="width:<?php echo ($ulWidth); ?>px;">
+                            <?php if(is_array($banner)): foreach($banner as $key=>$b): ?><li class=""></li><?php endforeach; endif; ?>
                         </ul>
                     </div>
                     <ul class="oUlplay">
-                        <li>
-                            <a href="#" target="_blank"><img src="../Public/images/1.jpg"></a>
-                        </li>
-                        <li>
-                            <a href="#" target="_blank"><img src="../Public/images/2.jpg"></a>
-                        </li>
-                        <li>
-                            <a href="#" target="_blank"><img src="../Public/images/3.jpg"></a>
-                        </li>
-                        <li>
-                            <a href="#" target="_blank"><img src="../Public/images/4.jpg"></a>
-                        </li>
-                        <li>
-                            <a href="#" target="_blank"><img src="../Public/images/5.jpg"></a>
-                        </li>
-                        <li>
-                            <a href="#" target="_blank"><img src="../Public/images/6.jpg"></a>
-                        </li>
+                    <?php if(is_array($banner)): foreach($banner as $key=>$b): ?><li>
+                            <a href="#" target="_blank"><img src="<?php echo ($b['url']); ?>"></a>
+                        </li><?php endforeach; endif; ?>   
                     </ul>
                 </div>
                 <!-- banner slider end -->
@@ -193,27 +173,52 @@ href='<?php echo U('Nankai/List/index', array('catsid'=>$cats['id']));?>'<?php e
         <div class="container">
             <div class="head">
                 <div class="head-title">
-                    <h1>投资机构</h1>
+                    <h1 class="fl">投资机构</h1>
                     <a href="#" class="fr" style="color:#4cc"> +MORE</a>
                     <div class="clear"></div>
                     <hr>
-                </div>
-                                  
+                </div>                
             </div>
-            <ul class="logo-list">
-              <li><a href="#" target="_blank"><img src="../Public/images/investor-logo-1.jpg" alt=""/></a></li>
-              <li><a href="#" target="_blank"><img src="../Public/images/investor-logo-1.jpg" alt=""/></a></li>
-              <li><a href="#" target="_blank"><img src="../Public/images/investor-logo-1.jpg" alt=""/></a></li>
-              <li><a href="#" target="_blank"><img src="../Public/images/investor-logo-1.jpg" alt=""/></a></li>
-              <li><a href="#" target="_blank"><img src="../Public/images/investor-logo-1.jpg" alt=""/></a></li>
-              <li><a href="#" target="_blank"><img src="../Public/images/investor-logo-1.jpg" alt=""/></a></li>
-              <li><a href="#" target="_blank"><img src="../Public/images/investor-logo-1.jpg" alt=""/></a></li>
-              <li><a href="#" target="_blank"><img src="../Public/images/investor-logo-1.jpg" alt=""/></a></li>
-              <li><a href="#" target="_blank"><img src="../Public/images/investor-logo-1.jpg" alt=""/></a></li>
-              <li><a href="#" target="_blank"><img src="../Public/images/investor-logo-1.jpg" alt=""/></a></li>
-              <li><a href="#" target="_blank"><img src="../Public/images/investor-logo-1.jpg" alt=""/></a></li>
-              <li><a href="#" target="_blank"><img src="../Public/images/investor-logo-1.jpg" alt=""/></a></li>
-            </ul>
+<div style="overflow:auto; width:1150px; margin:0 auto; margin-top:25px;">
+            <div class="angel-unit fl">
+            <div class="angel-info">
+                <div class="image fl"><a href="#"><img src="../Public/images/avatar.jpg" alt=""></a></div>
+                <div class="angel-name fl">
+                    <a href="#">你懂得</a>
+                    <p>你懂得</p>
+                </div>    
+            </div>
+            <div class="angel-desc"><p><strong>简介：</strong>
+                你懂得你懂得你懂得你懂得你懂得你懂得你懂得你懂得你懂得你懂得你懂得你懂得你懂得你懂得你懂得
+            <a href="#">更多>></a></p></div>
+            </div>
+
+                        <div class="angel-unit fl">
+            <div class="angel-info">
+                <div class="image fl"><a href="#"><img src="../Public/images/avatar.jpg" alt=""></a></div>
+                <div class="angel-name fl">
+                    <a href="#">你懂得</a>
+                    <p>你懂得</p>
+                </div>    
+            </div>
+            <div class="angel-desc"><p><strong>简介：</strong>
+                你懂得你懂得你懂得你懂得你懂得你懂得你懂得你懂得你懂得你懂得你懂得你懂得你懂得你懂得你懂得
+            <a href="#">更多>></a></p></div>
+            </div>
+
+            <div class="angel-unit fl">
+            <div class="angel-info">
+                <div class="image fl"><a href="#"><img src="../Public/images/avatar.jpg" alt=""></a></div>
+                <div class="angel-name fl">
+                    <a href="#">你懂得</a>
+                    <p>你懂得</p>
+                </div>    
+            </div>
+            <div class="angel-desc"><p><strong>简介：</strong>
+                你懂得你懂得你懂得你懂得你懂得你懂得你懂得你懂得你懂得你懂得你懂得你懂得你懂得你懂得你懂得
+            <a href="#">更多>></a></p></div>
+            </div>
+</div>
 
         </div>
     </div>
@@ -224,7 +229,7 @@ href='<?php echo U('Nankai/List/index', array('catsid'=>$cats['id']));?>'<?php e
         <div class="container">
             <div class="head">
                 <div class="head-title">
-                    <h1>合作媒体</h1>
+                    <h1 class="fl">合作媒体</h1>
                     <a href="#" class="fr" style="color:#4cc"> +MORE</a>
                     <div class="clear"></div>
                     <hr>
@@ -254,7 +259,7 @@ href='<?php echo U('Nankai/List/index', array('catsid'=>$cats['id']));?>'<?php e
   <div class="footer">
 			<div class="wrapper">
 				<div class="footer-icons">
-					<div class="wx-img"><img src="images/wx.png"/></div>
+					<div class="wx-img"><img width="130px" height="130px" src="../Public/images/wx.png"/></div>
 					<a  id="wx" href="javascript:void(0);"><span class="icon icon-wx"></span></a>
 					<a target="_blank" href="#"><span class="icon icon-wb"></span></a>
 					<a target="_blank" href="#"><span class="icon icon-qq"></span></a>

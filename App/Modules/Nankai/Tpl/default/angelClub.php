@@ -39,8 +39,8 @@
             <div class="angel-info">
                 <div class="image fl"><a href="#"><img src="images/avatar.jpg" alt=""></a></div>
                 <div class="angel-name fl">
-                    <a href="#"><h2>徐小平</h2></a>
-                    <a href="#"><h3>著名天使投资人</h3></a>
+                    <a href="#">徐小平</a>
+                    <a href="#">著名天使投资人</a>
                 </div>    
             </div>
             <div class="angel-desc"><p><strong>简介：</strong>新东方创始人，著名留学、签证、职业规划和人生发展咨询专家，现创“真格”天使投资基金。

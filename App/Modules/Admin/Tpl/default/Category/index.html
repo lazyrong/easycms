@@ -41,7 +41,7 @@
 				<tr target="item_id" rel="<{$vo.id}>" level="<{$vo.level}>" align="center">
 					<td ><{$vo.id}></td>
 					<td align="left"><{$vo.html}><{$vo.name}></td>
-					<td><if condition="$vo['modelid'] eq 0">文章模型<else />图片模型</if></td>
+					<td><if condition="$vo['modelid'] eq 0">文章模型<elseif condition="$vo['modelid'] eq 1" />名片模型<else />其他模型</if></td>
 					<td width="70" align="center"><{$vo.isshow|isok=###}></td>
 					<td width="70" align="center"><{$vo.isverify|isok=###}></td>
 					<td width="70" align="center"><{$vo.ispush|isok=###}></td>

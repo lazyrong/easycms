@@ -77,7 +77,10 @@ $(function(){
 			<div id="sidebar">
 				<div class="toggleCollapse"><h2>主菜单</h2><div>收缩</div></div>
 				<div class="accordion" fillSpace="sidebar">
-					<div class="accordionHeader">
+					
+
+					<!--  会员信息管理 -->
+<!-- 					<div class="accordionHeader">
 						<h2><span>Folder</span>会员信息管理</h2>
 					</div>
 					<div class="accordionContent">
@@ -85,10 +88,10 @@ $(function(){
 							<li><a href="<{:U('User/index')}>" target="navTab" rel="listusers" title="会员信息" >浏览会员信息</a></li>
 							<li><a href="<{:U('User/add')}>" target="dialog" width="600" height="300">添加会员信息</a></li>
 						</ul>
-					</div>
+					</div> -->
 					<!-- 文章管理 -->
-					<div class="accordionHeader">
-						<h2><span>Folder</span>文章管理</h2>
+<!-- 					<div class="accordionHeader">
+						<h2><span>Folder</span>栏</h2>
 					</div>
 					<div class="accordionContent">
 						<ul class="tree treeFolder">
@@ -96,9 +99,49 @@ $(function(){
 							<li><a href="<{:U('Articlem/index')}>" target="navTab" rel="listarticle" title="文章列表" >文章列表</a></li>
 							<li><a href="<{:U('Articlem/rubbish')}>" target="navTab" rel="listarticle1" title="文章回收站" >文章回收站</a></li>
 						</ul>
-					</div>
-					<!--评论管理-->
+					</div> -->
+										<!-- 首页内容管理 -->
 					<div class="accordionHeader">
+						<h2><span>Folder</span>首页内容管理</h2>
+					</div>
+					<div class="accordionContent">
+						<ul class="tree treeFolder">
+							<li><a href="<{:U('Admin/banner/index')}>" target="navTab" rel="listbanner" title="Banner图片" >Banner图片</a></li>
+							<li><a href="#" target="navTab" rel="listbanner2" title="项目推荐" >项目推荐</a></li>
+							<li><a href="#" target="navTab" rel="listbanner3" title="投资机构推荐" >投资机构推荐</a></li>
+							<li><a href="#" target="navTab" rel="listbanner4" title="合作媒体展示" >合作媒体展示</a></li>
+						</ul>
+					</div>
+
+					<!-- 栏目管理 -->
+					<div class="accordionHeader">
+						<h2><span>Folder</span>栏目管理</h2>
+					</div>
+					<div class="accordionContent">
+						<ul class="tree treeFolder">
+							<li><a href="<{:U('Admin/articlem/index',array('catsid'=>71))}>" target="navTab" rel="listcate71" title="南开好项目" >南开好项目管理</a></li>
+							<li><a href="<{:U('Admin/articlem/index',array('catsid'=>72))}>" target="navTab" rel="listcate72" title="私董会" >私董会管理</a></li>
+							<li><a href="<{:U('Admin/articlem/index',array('catsid'=>73))}>" target="navTab" rel="listcate73" title="机构" >机构管理</a></li>
+							<li><a href="<{:U('Admin/articlem/index',array('catsid'=>74))}>" target="navTab" rel="listcate74" title="创投学院" >创投学院管理</a></li>
+							<li><a href="<{:U('Admin/articlem/index',array('catsid'=>75))}>" target="navTab" rel="listcate75" title="赛区" >赛区管理</a></li>
+							<li><a href="<{:U('Admin/articlem/index',array('catsid'=>86))}>" target="navTab" rel="listcate86" title="关于我们" >关于我们管理</a></li>
+							<li><a href="<{:U('Category/index')}>" target="navTab" rel="listcate" title="文章分类列表" >栏目列表</a></li>
+							<li><a href="<{:U('Articlem/rubbish')}>" target="navTab" rel="listarticle1" title="文章回收站" >内容回收站</a></li>
+						</ul>
+					</div>
+
+
+					<!-- 报名管理 -->
+<!-- 					<div class="accordionHeader">
+						<h2><span>Folder</span>报名管理</h2>
+					</div>
+					<div class="accordionContent">
+						<ul class="tree treeFolder">
+							<li><a href="#" target="navTab" rel="listcate" title="报名列表" >项目报名列表</a></li>
+						</ul>
+					</div> -->
+					
+<!-- 					<div class="accordionHeader">
 						<h2><span>Folder</span>评论管理</h2>
 					</div>
 					<div class="accordionContent">
@@ -106,7 +149,9 @@ $(function(){
 							<li><a href="<{:U('Comment/index')}>" target="navTab" rel="listcomment" title="评论列表" >评论列表</a></li>
 							<li><a href="<{:U('Comment/rubbish')}>" target="navTab" rel="listcomment1" title="评论回收站" >评论回收站</a></li>
 						</ul>
-					</div>
+					</div> -->
+					
+					<!-- 
 					<div class="accordionHeader">
 						<h2><span>Folder</span>插件管理</h2>
 					</div>
@@ -114,7 +159,8 @@ $(function(){
 						<ul class="tree treeFolder">
 							<li><a href="<{:U('Plugin/index')}>" target="navTab" rel="listplugin" title="插件列表" >插件列表</a></li>
 						</ul>
-					</div>
+					</div> -->
+
 					<div class="accordionHeader">
 						<h2><span>Folder</span>系统管理</h2>
 					</div>
@@ -130,7 +176,8 @@ $(function(){
 							<li><a href="<{:U('System/updateTplCache')}>" target="dialog" rel="listsystem" title="更新模版缓存" >更新模版缓存</a></li>
 						</ul>
 					</div>
-					<div class="accordionHeader">
+
+<!-- 					<div class="accordionHeader">
 						<h2><span>Folder</span>权限管理</h2>
 					</div>
 					<div class="accordionContent">
@@ -140,7 +187,7 @@ $(function(){
 							<li><a href="<{:U('Rbacnode/index')}>" target="navTab" rel="rbacnode" title="节点管理" >节点管理</a></li>
 					
 						</ul>
-					</div>
+					</div> -->
 				</div>
 
 			</div>

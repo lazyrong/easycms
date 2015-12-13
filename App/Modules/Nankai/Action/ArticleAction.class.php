@@ -11,36 +11,28 @@ class ArticleAction extends CommonAction
 		$this->assign('aid',$article_id);
 		$article=D('Article')->relation(true)->where("article_id=$article_id")->find();
 		//前一篇文章
-		$preArticle=M('Article')->where("article_id<$article_id")->order('article_id desc')->limit(1)->find();
+		$article_tid = $article['tid'];
+		$preArticle=M('Article')->where("article_id<$article_id AND tid=$article_tid")->order('article_id desc')->limit(1)->find();
 		$this->assign('preArticle',$preArticle);
 		//后一篇文章
-		$nextArticle=M('Article')->where("article_id>$article_id")->limit(1)->find();
+		$nextArticle=M('Article')->where("article_id>$article_id AND tid=$article_tid")->limit(1)->find();
 		$this->assign('nextArticle',$nextArticle);
 		$this->assign('article',$article);
-		//侧栏的数据分配
-		$sidebar1=M('Article')->where('ispush=1 and islock=0')->order('approval desc')->limit('5')->select();
-		$sidebar2=M('Article')->where('ispush=1 and islock=0')->order('opposition desc')->limit('5')->select();
-		$sidebar3=M('Article')->where('ispush=1 and islock=0')->order('rand()')->limit('5')->select();
-		//赞多到少
-		$this->assign('sidebar1',$sidebar1);
-		//赞少到多
-		$this->assign('sidebar2',$sidebar2);
-		//随机5篇
-		$this->assign('sidebar3',$sidebar3);
-		//设置前台文章标题右侧的钩子，插件机制
-		$p=M('Plugin')->where("position=1 and isinstalled=1")->select();
-		$this->assign('plugin1',$p);
-		//获取文章的二维码图片从谷歌api
-		$qrcode='http://'.$_SERVER['HTTP_HOST'].__URL__."/index/articleid/$article_id";
-		$this->assign('qrcode',$qrcode);
-		if($article['modelid']==1){
-			preg_match_all("/<img(.*)src=\"([^\"]+)\"[^>]+>/isU",$article['content'],$matches);
-            $img = $matches[2];
-    		$this->assign('imgs',$img);
-    		//dump($img);
-			$this->display('image_article');
+		
+		//左侧菜单
+		$cats=M('Category')->find($article['tid']);
+		$pid = $cats['pid'];
+		if ( intval($pid,10) > 0) {
+			$menu = M('Category')->where("pid=$pid")->order('sort asc')->select();
+			$this->assign('menu',$menu);
+		}
+		//menu选中状态
+		$this->assign('catName',$cats['name']);
+
+		if($article['modelid']==0){
+			$this->display('article_article');		
 		}else{
-			$this->display('article_article');
+			$this->display('article_card');
 		}
 	}
 

@@ -11,13 +11,35 @@
     <script type="text/javascript" src="../Public/js/slider.js"></script>
     <script>
     $(function() {
+          $(window).scroll(function() { 
+            var top = $(window).scrollTop();
+            if( top > 100) {
+              $(".pannel-block").css({
+                "position":"fixed",
+                "top":"10px",
+                });
+              $(".box-main").css({
+                "margin-left":"270px"
+              });
+            } else {
+                 $(".pannel-block").css({
+                "position":"static",
+                "top":""
+                });
+                $(".box-main").css({
+                "margin-left":"10px"
+              });
+            }
+
+          }); 
+
         $("li#zone").hover(function() {
                 $(".pop-up").addClass('pop');
             },
             function() {
                 $(".pop-up").removeClass('pop');
             });
-    })
+});
     </script>
     <style>
     /*ul:first-child { border-top: 1px solid #E5E5E5;}  */
@@ -57,7 +79,7 @@
 href='<?php echo U('Nankai/List/index', array('catsid'=>$cats['id']));?>'<?php endif; ?>
                                 >
                                 <?php echo ($cats["name"]); ?></a>
-                            <?php if((count($cats['children']) > 0)): ?><ul class="pop-up-wrapper pop-up">
+                            <?php if((count($cats['children']) > 1)): ?><ul class="pop-up-wrapper pop-up">
                                 <?php if(is_array($cats['children'])): foreach($cats['children'] as $key=>$vo): ?><li>
                                     <a href="<?php echo U('Nankai/List/index', array('catsid'=>$vo['id']));?>"><?php echo ($vo['name']); ?></a>
 
@@ -84,6 +106,7 @@ href='<?php echo U('Nankai/List/index', array('catsid'=>$cats['id']));?>'<?php e
 <div class="container-wrapper">
     <div class="container">
         <div class="box-aside fl">
+        <div class="pannel-block">
             <ul>
             <?php if(is_array($menu)): foreach($menu as $key=>$m): ?><li <?php if($catName == $m['name']): ?>class="active"<?php endif; ?>><a href="<?php echo U('Nankai/List/index',array('catsid'=>$m['id']));?>"><?php echo ($m["name"]); ?></a></li><?php endforeach; endif; ?>
             </ul>
@@ -91,6 +114,7 @@ href='<?php echo U('Nankai/List/index', array('catsid'=>$cats['id']));?>'<?php e
             <hr style="color:#E5E5E5">
             <p>微信公众平台：搜索“南开好项目"<br>或"扫描下面的二维码”</p>
             <p><img src="../Public/images/wx.png"></p>
+            </div>
         </div>
         <!-- 主内容区 -->
         <div class="box-main fl">
@@ -123,10 +147,10 @@ href='<?php echo U('Nankai/List/index', array('catsid'=>$cats['id']));?>'<?php e
     </div>
 </div>  
     <!-- footer -->
-  <div class="footer">
+  <div class="footer" style="position:relative; z-index:100;">
 			<div class="wrapper">
 				<div class="footer-icons">
-					<div class="wx-img"><img src="images/wx.png"/></div>
+					<div class="wx-img"><img width="130px" height="130px" src="../Public/images/wx.png"/></div>
 					<a  id="wx" href="javascript:void(0);"><span class="icon icon-wx"></span></a>
 					<a target="_blank" href="#"><span class="icon icon-wb"></span></a>
 					<a target="_blank" href="#"><span class="icon icon-qq"></span></a>

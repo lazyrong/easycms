@@ -36,7 +36,6 @@
 				<th width="10"><input type="checkbox" group="ids[]" class="checkboxCtrl"></th>
 				<th width="30">标题</th>
 				<th width="30">分类</th>
-				<th width="30">文章类型</th>
 				<th width="40">关键词</th>
 				<th width="40">发布时间</th>
 				<th width="30">是否推荐</th>
@@ -50,7 +49,6 @@
 					<td><input name="ids[]" value="<?php echo ($vo['article_id']); ?>" type="checkbox">:<?php echo ($vo["article_id"]); ?></td>
 					<td><?php echo ($vo["title"]); ?></td>
 					<td><?php echo ($vo["name"]); ?></td>
-					<td><?php if($vo["modelid"] == 0): ?>文章类型<?php else: ?>图片类型<?php endif; ?></td>
 					<td><?php echo ($vo["keyword"]); ?></td>
 					<td><?php echo (date("Y-m-d H:m:s",$vo["pubtime"])); ?></td>
 					<td><?php echo (isok($vo["ispush"])); ?></td>

@@ -13,6 +13,28 @@
     <script type="text/javascript" src="../Public/js/slider.js"></script>
     <script>
     $(function() {
+          $(window).scroll(function() { 
+            var top = $(window).scrollTop();
+            if( top > 100) {
+              $(".pannel-block").css({
+                "position":"fixed",
+                "top":"10px",
+                });
+              $(".box-main").css({
+                "margin-left":"270px"
+              });
+            } else {
+                 $(".pannel-block").css({
+                "position":"static",
+                "top":""
+                });
+                $(".box-main").css({
+                "margin-left":"10px"
+              });
+            }
+
+          }); 
+
         $("li#zone").hover(function() {
                 $(".pop-up").addClass('pop');
             },
@@ -20,122 +42,85 @@
                 $(".pop-up").removeClass('pop');
             });
     })
+
+
     </script>
     <style>
     /*ul:first-child { border-top: 1px solid #E5E5E5;}  */
     </style>
 </head>
-<body id="body">
+<body>
 <header> 
   <!-- 导航开始 -->
   <include file="Public:header" />
   <!-- 导航结束 --> 
 </header>
-<div class="container">
-  <article itemscope itemtype="http://schema.org/Article">
-    <div class="col-lg-8 col-md-8 content">
-      <div class="clean"></div>
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h1 class="pull-left" itemprop="name"><{$article.title}></h1>
-          <div class="pull-right"> 
-          	<!--qr二维码开始-->
-          	<div style="float:left;position:relative" id="qr">
-          		 <a  class="btn btn-default btn-sm pull-left"> <span class="glyphicon glyphicon-thumbs-up"></span>“扫一扫”二维码分享给朋友</a>&nbsp;&nbsp;
-          		<div class="hm" style="margin-top:14px;display:none;position:absolute;z-index:1">
-          			<img z-index=999 src="https://chart.googleapis.com/chart?cht=qr&chs=200x200&choe=UTF-8&chld=L|4&chl=<{$qrcode}>"/>
-          		</div>
-          	</div>
-          	<script>
-          		$(function(){
-          			$('#qr').hover(function(){
-						$(this).children('.hm').toggle();
-					});	
-				});
-          	</script>
-        <!--前台文章标题右侧钩子，position=1开始-->
-        <foreach name="plugin1" item="plugin1Val">
-            <{:R($plugin1Val['method'],$article['article_id'],'Widget')}>
-        </foreach>
-        <!--前台文章标题右侧钩子，position=1结束-->
-           </div>
-          <div class="clean"></div>
+
+<div class="container-wrapper">
+    <div class="container">
+
+      <!-- 侧边导航 -->
+        <div class="box-aside fl">
+            <div class="pannel-block">
+            <ul>
+            <foreach name="menu" item="m">
+                <li <if condition="$catName eq $m['name']"> class="active" </if>><a href="<{:U('Nankai/List/index',array('catsid'=>$m['id']))}>"><{$m.name}></a></li>
+            </foreach>
+            </ul>
+            <h2>关注我们</h2>
+            <hr style="color:#E5E5E5">
+            <p>微信公众平台：搜索“南开好项目"<br>或"扫描下面的二维码”</p>
+            <p><img src="../Public/images/wx.png"></p>
+            </div>
         </div>
-        <div itemprop="articleBody" class="panel-body">
-         <{$article.content}>
-        </div>
-        <div>
-          <div class="pull-left text-success" >
+
+        <!-- 主内容区 -->
+        <div class="box-main fl">
+          <h3 class="center"><{$article.title}></h3>
+          <div class="article-detail center">
+                <i class="i-icon1 author"></i><span class="mr20">本站编辑</span>
+                <i class="i-icon1 date"></i><span class="mr20">2015-12-12 10:10:53</span>
+                <i class="i-icon1 hot"></i> <span class="mr20" id="views">5</span>
+                <i class="i-icon1 share"></i><span class="mr10"> <div class="bshare-custom" style="padding:20px 0;clear:both;"><div class="bsPromo bsPromo2"></div>
+                  <a title="更多平台" class="bshare-more bshare-more-icon more-style-addthis"></a>
+                  <a title="分享到QQ空间" class="bshare-qzone"></a>
+                  <a title="分享到新浪微博" class="bshare-sinaminiblog"></a>
+                  <a title="分享到腾讯微博" class="bshare-qqmb" href="javascript:void(0);"></a>
+                  <a title="分享到人人网" class="bshare-renren"></a>
+                  <a title="分享到朋友网" class="bshare-qqxiaoyou" href="javascript:void(0);"></a>
+                  <a title="分享到豆瓣" class="bshare-douban" href="javascript:void(0);"></a>
+                  <span class="BSHARE_COUNT bshare-share-count" style="float: none;">0</span>
+                  <script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/buttonLite.js#style=-1&amp;uuid=&amp;pophcol=2&amp;lang=zh"></script>
+                  <script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/bshareC0.js"></script> </span>
+          </div>
+      </div>
+          <!-- 内容 -->
+         <div class="article-content">
+              <{$article.content}>
+         </div>
+
+         <div style="padding-top:15px; border-top:1px solid #ccc;">
+          <div class="fl" style="color:#468847;">
             <if condition="$preArticle neq null">
-              上一篇：<a href="<{:U('Index/Article/index',array('articleid'=>$preArticle['article_id']))}>" ><span><{$preArticle.title}></span></a>
+              上一篇：<a href="<{:U('Nankai/Article/index',array('articleid'=>$preArticle['article_id']))}>" ><span><{$preArticle.title}></span></a>
             <else/>
                没有上一篇了
             </if>
           </div>
-          <div class="pull-right text-danger" >
+          <div class="fr" style="color:#468847;" >
             <if condition="$nextArticle neq null">
-              下一篇：<a href="<{:U('Index/Article/index',array('articleid'=>$nextArticle['article_id']))}>" ><span><{$nextArticle.title}></span></a>
+              下一篇：<a href="<{:U('Nankai/Article/index',array('articleid'=>$nextArticle['article_id']))}>" ><span><{$nextArticle.title}></span></a>
             <else/>
                没有下一篇了
             </if>
           </div>
         </div>
-        <div style="clear:both"></div>
-        <div style="border-top:1px solid #ddd;">
-		  </div>
-      <div class="panel-footer">
-          <div class="text-muted"> 本文在
-            <time itemprop="datePublished" datetime="<{$article.pubtime|date="Y-m-d H:i:s",###}> "><{$article.pubtime|date="Y-m-d H:i:s",###}></time>
-            发布在 <span itemprop="articleSection"><a href="__GROUP__/Index/List/index/catsid/<{$article.tid}>"><{$article.name}></a></span>  </div>
-        </div>
-      </div>
-<if condition="$article.iscommend eq 1">
-<!--评论开始-->
-<iframe class="col-lg-12 col-md-12" scrolling="no"  src="<{:U('Index/Comment/comments_article',array('aid'=>$aid))}>" frameborder="0"  style="max-width:730px;min-height:540px;padding:0;margin:0 auto;"></iframe>
-<!--评论结束-->
-</if>
     </div>
-  </article>
-  <div class="col-lg-4 col-md-4 sidebar">
-    <div class="clean"></div>
-      <div class="panel panel-success">
-        <div class="panel-heading">
-          <h3 class="panel-title"> <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" class=""> <span class="glyphicon glyphicon-thumbs-up mr10"></span> <span itemprop="name">最受欢迎5篇文章</span> </a> </h3>
-        </div>
-        <div class="panel-collapse in" style="height: auto;"> 
-			     <foreach name="sidebar1" item="sidebar1Val">
-        		<a href="<{:U('Index/Article/index',array('articleid'=>$sidebar1Val['article_id']))}>" class="list-group-item"><span><{$sidebar1Val.title}></span></a> 
-        	</foreach>
-        </div>
-      </div>
-      <div class="panel panel-info">
-        <div class="panel-heading">
-          <h3 class="panel-title"> <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" class=""> <span class="glyphicon glyphicon-thumbs-down mr10"></span> <span itemprop="name">最受争议的5篇文章</span> </a> </h3>
-        </div>
-        <div  class="panel-collapse in" style="height: auto;">
-        	<foreach name="sidebar2" item="sidebar2Val">
-        		<a href="<{:U('Index/Article/index',array('articleid'=>$sidebar2Val['article_id']))}>" class="list-group-item"><span><{$sidebar2Val.title}></span></a> 
-        	</foreach>
-        </div>
-      </div>
-      <div class="panel panel-warning">
-        <div class="panel-heading">
-          <h3 class="panel-title"> <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" class=""> <span class="glyphicon glyphicon-pushpin mr10"></span> <span itemprop="name">随机推荐5篇文章</span> </a> </h3>
-        </div>
-        <div  class="panel-collapse in" style="height: auto;"> 
-			   <foreach name="sidebar3" item="sidebar3Val">
-        		<a href="<{:U('Index/Article/index',array('articleid'=>$sidebar3Val['article_id']))}>" class="list-group-item"><span><{$sidebar3Val.title}></span></a> 
-        	</foreach>
-        </div>
-      </div>
-	
-   
-   
+        <!-- 主内容区 结束-->
+      
+</div>  
 
-    <script>var ad=$('#ad'),st;var sd=$('.sidebar'),st;ad.attr('data-offset-top',ad.offset().top+ad.innerWidth());var wd=sd.innerWidth()-30;ad.attr({style:'width:'+wd+'px'});</script> 
-  </div>
-  <div class="clean"></div>
-</div>
+
 <!-- footer start -->
 <include file="Public:footer" />
 <!-- footer end -->

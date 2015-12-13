@@ -4,7 +4,7 @@
  * @author   <[c@easycms.cc]>
  */
 class ArticlemAction extends CommonAction{
-	public function index() {
+	public function index($catsid=0) {
 		//列表过滤器，生成查询Map对象
 		$map = $this->_search('Article');
 		if(method_exists($this, '_filter')) {
@@ -12,12 +12,21 @@ class ArticlemAction extends CommonAction{
 		}
 		$model = D('Article');
 		$map['islock']=0;
+		//增加搜索条件，列出各自分类下文章
+
+		$map['tid']= array('in',getChildrenId($catsid));
+		// $map['tid'] = $catsid;
 		if (!empty($model)) {
 			$this->_list($model, $map);
 		}
+		
+		//栏目id
+		$this->assign('catsid',$catsid);
+
 		$this->display();
 		return;
 	}
+
 
 	//xheditor上传文件保存
 	public function upload(){
@@ -166,11 +175,10 @@ class ArticlemAction extends CommonAction{
 		}
 	}	
 	
-	public function add(){
+	public function addTo($catsid){
 		$m=M('Category');
-		$clist = $m->order('sort asc')->select();
-		import('ORG.Util.Category');
-		$clist=Category::unlimitedForLevel($clist);
+		$clist = $m->order('sort asc')->where("pid=$catsid")->select();
+		$this->assign('catsid',$catsid);
 		$this->assign('clist',$clist);
 		$this->display();
 	}
@@ -181,11 +189,17 @@ class ArticlemAction extends CommonAction{
 		$where['id']=$id;
 		$catinfo=$m->where($where)->find();
 		$this->assign('catinfo',$catinfo);
-		if($catinfo['modelid']=='0'){  //文章模型为0，普通文章类型
+		switch($catinfo['modelid']) {
+			case 0:
 			$this->display('addNormal');
-		}else{                         //文章模型为1，图片文章类型
-			$this->display('addPicture');
+			break;
+			case 1:
+			$this->display('addNormal');
+			break;
+			case 2:
+			$this->display('addAbout');
 		}
+
 		
 	}
 	
@@ -222,7 +236,7 @@ class ArticlemAction extends CommonAction{
 		if($vo['modelid']==0){
 			$this->display('editNormal');
 		}else{
-			$this->display('editPicture');
+			$this->display('editNormal');
 		}
 	}
 	
@@ -280,6 +294,7 @@ class ArticlemAction extends CommonAction{
     	$pk=$model->getPk ();  
 		$data[$pk]=array('in', $_POST['ids']);
 		$model->where($data)->delete();
+		
 		$this->success('更新成功');
 	}
 
@@ -345,7 +360,7 @@ class ArticlemAction extends CommonAction{
 	 * @param string $sortBy 排序
 	 * @param boolean $asc 是否正序
 	 */
-	protected function _list($model, $map = array(), $sortBy = '', $asc = false) {
+	protected function _list($model ,$map = array(), $sortBy = '', $asc = false) {
 		//排序字段 默认为主键名
 		if (!empty($_REQUEST['_order'])) {
 			$order = $_REQUEST['_order'];
@@ -360,7 +375,7 @@ class ArticlemAction extends CommonAction{
 		} else {
 			$sort = $asc ? 'asc' : 'desc';
 		}
-		
+
 		//取得满足条件的记录数
 		$count = $model->where($map)->count();
 		

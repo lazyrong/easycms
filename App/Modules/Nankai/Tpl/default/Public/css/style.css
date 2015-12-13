@@ -8,6 +8,7 @@
 /**
  * global style
  */
+body {background: #ECECED none repeat scroll 0% 0%;}
 li {
     list-style: none
 }
@@ -140,7 +141,7 @@ border-left:5px solid #4C9ED9;
 #playBox .next{ cursor:pointer; width:45px; height:45px; background:url(../images/r.png) no-repeat; 
     position:absolute; top:145px; right:10px; z-index:10;}
 #playBox .smalltitle {width:750px; height:10px; position:absolute; bottom:15px; z-index:10}
-#playBox .smalltitle ul{ width:120px; margin:0 auto;}
+#playBox .smalltitle ul{ margin:0 auto; overflow: auto;}
 #playBox .smalltitle ul li{ width:10px; height:10px; margin:0 5px; border-radius:10px; background:#ffffff; 
     float:left; overflow:hidden;*display:inline;*zoom:1; cursor:pointer;}
 #playBox .smalltitle .thistitle{ background:#69aaec;}
@@ -294,12 +295,23 @@ background: url(../images/icon-wb.png) no-repeat;}
 /*====文章页面 css====*/
 
 .box-aside {
-    width: 220px;
 }
-
+.pannel-block {
+    width: 220px;
+    background: #fff none repeat scroll 0% 0%;
+    padding:20px;
+    box-shadow: 1px 1px 1px #E7E7E7;
+    border-top:2px solid #434F81;
+    border-radius: 2px;
+}
 .box-main {
-    width: 920px;
-    padding-left: 60px;
+    width: 888px;
+    margin-left: 10px;
+    padding:20px;
+    background: #fff none repeat scroll 0% 0%;
+    box-shadow: 1px 1px 1px #E7E7E7;
+    border-top:2px solid #434F81;
+    border-radius: 2px;
 }
 
 .box-aside ul{ padding-bottom: 35px;
@@ -314,8 +326,8 @@ display: block;
 color: #000;
 text-decoration: none;
 text-indent: 20px;}
-.box-aside li.active a{color: #CC2937; background-color: #F5F7F8;}
-.box-aside li:hover {background-color: #F5F7F8;}
+.box-aside li.active a{color: #CC2937; background-color: #EEEEEE;}
+.box-aside li:hover {background-color: #EEEEEE;}
 .box-aside a span.tip {
 display: inline-block;
 margin-left: 16px;
@@ -336,7 +348,8 @@ cursor: default;
 color: #7A7A7A;
 line-height: 20px;
 margin: 15px 0px;
-text-align: center;}
+text-align: center;
+}
 
 .box-main .head{
 border-bottom: 1px solid #E5E5E5;
@@ -374,7 +387,7 @@ vertical-align: middle;
 
 .article-brief-con {
 margin-left: 30px;
-width: 670px;
+width: 630px;
 float:left;
 }
 .article-brief-con .title a{
@@ -388,6 +401,47 @@ color: #7A7A7A;
 font-size: 12px;
 line-height: 20px;
 }
+
+/*
+文章详情页面
+ */
+
+.i-icon {
+display: inline-block;
+width: 28px;
+height: 28px;
+background: transparent url("../img/small-icon.jpg") no-repeat scroll 0% 0%;
+vertical-align: middle;
+}
+.i-icon .date {
+    background-position: -36px 0px;
+}
+
+.article-detail {
+line-height: 28px;
+color: #7A7A7A;
+font-size: 14px;
+overflow: auto;
+}
+
+.article-detail span {
+    line-height: 28px;
+display: inline-block;
+vertical-align: middle;
+}
+
+article-content {
+ box-shadow: 1px 1px 1px #E7E7E7;
+}
+
+
+
+
+
+
+
+
+
 
 .more {
     margin: 50px 0;
@@ -408,6 +462,7 @@ position: relative;
 cursor: pointer;
 }
 .more .btn-more:hover{background-color: #e1e1e1; color:#a1a1a1;}
+
 
 
 .box-main-angel {
@@ -452,30 +507,46 @@ cursor: pointer;
 
 
 .angel-unit {
-    width: 288px;
-    margin-left:50px;
+    width: 321px;
+    margin: 0px 10px;
+    margin-bottom: 25px;
+    padding:20px;
     border:1px solid #ccc;
-    padding: 10px 20px;
     padding-bottom: 0px;
- /*   box-shadow: 0px 1px 0px #888888; */
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.05);
+    border-radius: 3px; 
 }
 
 .angel-info {    
     overflow: auto;
     padding-bottom: 10px;
     margin-bottom: 10px;
-    border-bottom: 1px dotted #ccc;
+    border-bottom: 1px solid #ccc;
 }
-.angel-name {padding-top:13px; width: 190px; text-align: center; height:52px;}
-.angel-name h1{line-height: 70px;}
-.angel-info .image { padding-right: 20px;}
+.angel-name {padding-top:13px; padding-left: 30px; width: 160px; text-align: left; height:52px;}
+.angel-name a{font-weight: 700;
+color: #000;
+font-size: 16px;}
+.angel-name a:hover{
+color: #53AEED;
+}
+.angel-name p {
+    padding-top:10px;
+    
+}
+.angel-info .image {border: 1px solid #EEE;}
 .angel-desc {
     overflow-x: hidden;
     height:100px;
      padding-bottom: 10px;
-    margin-bottom: 10px;
-    border-bottom: 1px dotted #ccc;   
+    margin-bottom: 10px;  
     overflow: auto;
+}
+.angel-desc a {
+    display: inline-block;
+    text-decoration: underline;
+    color: #53AEED;
+    
 }
 
 
@@ -486,4 +557,14 @@ cursor: pointer;
 }
 .tag-box li {
  float:left;
+}
+.title h3 {
+font-size: 16px;
+float: left;
+margin: 0px;
+position: relative;
+top: 1px;
+padding-bottom: 10px;
+border-bottom: 2px solid #5E75DB;
+font-weight: 700;
 }

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+   <title><{$catName}>-<{:R('Siteinfo/info',array('title'),'Widget')}></title>
+<meta property="og:description" content=""/>
+    <link type="text/css" rel="stylesheet" href="../Public/css/base.css">
+    <link rel="stylesheet" rel="stylesheet" href="../Public/css/style.css">
+    <script type="text/javascript" src="../Public/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../Public/js/slider.js"></script>
+    <script>
+    $(function() {
+        $("li#zone").hover(function() {
+                $(".pop-up").addClass('pop');
+            },
+            function() {
+                $(".pop-up").removeClass('pop');
+            });
+    })
+    </script>
+    <style>
+    /*ul:first-child { border-top: 1px solid #E5E5E5;}  */
+    </style>
+</head>
+
+<body>
+    <!-- header -->
+      <include file="Public:header" />
+    <!-- header end -->
+
+<!-- 开始 -->
+ <div class="container">
+    <div class="title">
+        <h3>私董会</h3>
+    </div>
+    <div class="clearfix"></div>
+    <div style="overflow:auto; width:1150px; margin:0 auto; margin-top:25px;">
+
+<foreach name="list" item="vo">
+  <!--私董会名片 -->
+        <div class="angel-unit fl">
+            <div class="angel-info">
+                <div class="image fl"><a href="#"><img src="../Public/images/avatar.jpg" alt=""></a></div>
+                <div class="angel-name fl">
+                    <a href="#"><{$vo.title}></a>
+                    <p><{$vo.keyword}></p>
+                </div>    
+            </div>
+            <div class="angel-desc"><p><strong>简介：</strong>
+                <{$vo['summary']|substr=0,260}>...
+            <a href="<{:U('Nankai/Article/index',array('articleid'=>$vo['article_id']))}>">更多>></a></p></div>
+            </div>
+</foreach>
+    <!--私董会名片结束 -->
+    
+    </div>
+    <div class="clearfix"></div>
+    <div class="more">
+         <a href="javascript:void(0)" class="btn-more">查看更多</a>
+    </div>
+    </div>
+        <!-- 结束-->
+
+    <!-- footer -->
+  <include file="Public:footer" />
+    <!-- footer end -->
+</body>
+
+</html>

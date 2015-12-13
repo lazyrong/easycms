@@ -10,6 +10,12 @@ class IndexAction extends CommonAction
 		$link=M('link');
 		$portrait=M('Member_user');
 		$article=M('article');
+		
+		//首页banner图展示
+		 $banner = M('banner')->where('isshow = 1')->order('sort asc')->select();
+		$this->assign('banner', $banner);
+		$this->assign('ulWidth', count($banner)*20);
+		
 		//首页中部3篇文章推荐展示
 		$mPushArticle=$article->where('isslides=1 and islock=0')->order('rand()')->select();
 		//首页下部4个分类推荐展示
@@ -34,7 +40,6 @@ class IndexAction extends CommonAction
 		//显示首页右侧用户注册头像
 		$this->assign('approval2',$approval2);
 		//显示模板	
-
 		$this->display('index');
 	}
 }

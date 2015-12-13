@@ -44,7 +44,7 @@
 			<?php if(is_array($list)): foreach($list as $key=>$vo): ?><tr target="item_id" rel="<?php echo ($vo["id"]); ?>" level="<?php echo ($vo["level"]); ?>" align="center">
 					<td ><?php echo ($vo["id"]); ?></td>
 					<td align="left"><?php echo ($vo["html"]); echo ($vo["name"]); ?></td>
-					<td><?php if($vo['modelid'] == 0): ?>文章模型<?php else: ?>图片模型<?php endif; ?></td>
+					<td><?php if($vo['modelid'] == 0): ?>文章模型<?php elseif($vo['modelid'] == 1): ?>名片模型<?php else: ?>其他模型<?php endif; ?></td>
 					<td width="70" align="center"><?php echo (isok($vo["isshow"])); ?></td>
 					<td width="70" align="center"><?php echo (isok($vo["isverify"])); ?></td>
 					<td width="70" align="center"><?php echo (isok($vo["ispush"])); ?></td>

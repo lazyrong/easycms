@@ -24,11 +24,11 @@
 <div class="pageContent">
 	<div class="panelBar">
 		<ul class="toolBar">
-			<li><a class="add" href="__URL__/add" target="dialog"  width="800" height="600"  rel="user_msg" title="选择文章分类"><span>添加</span></a></li>
+			<li><a class="add" href="__URL__/addTo/catsid/<?php echo ($catsid); ?>" target="dialog"  width="1080" height="600"  rel="user_msg" title="选择内容分类"><span>添加</span></a></li>
 			<li><a  target="selectedTodo" target="dialog" rel="ids[]" href="__URL__/rubAll" class="delete" ><span>批量放入回收站</span></a></li>
 			<li><a class="edit" href="__URL__/edit/article_id/{item_id}"   width="800" height="600" target="dialog"><span>修改</span></a></li>
 			<li class="line">line</li>
-			<li><a class="icon"  href="javascript:navTabPageBreak()"><span>刷新</span></a></li>
+			<li><a class="icon"  href="javascript:navTabPageBreak()" ><span>刷新</span></a></li>
 			<!--<li><a class="icon" href="demo/common/dwz-team.xls" target="dwzExport" targetType="navTab" title="实要导出这些记录吗?"><span>导出EXCEL</span></a></li>-->
 		</ul>
 	</div>
@@ -38,7 +38,6 @@
 				<th width="10"><input type="checkbox" group="ids[]" class="checkboxCtrl"></th>
 				<th width="30">标题</th>
 				<th width="30">分类</th>
-				<th width="30">文章类型</th>
 				<th width="40">关键词</th>
 				<th width="40">发布时间</th>
 				<th width="50">是否首页推荐</th>
@@ -52,7 +51,6 @@
 					<td><input name="ids[]" value="<?php echo ($vo['article_id']); ?>" type="checkbox">:<?php echo ($vo["article_id"]); ?></td>
 					<td><?php echo ($vo["title"]); ?></td>
 					<td><?php echo ($vo["name"]); ?></td>
-					<td><?php if($vo["modelid"] == 0): ?>文章类型<?php else: ?>图片类型<?php endif; ?></td>
 					<td><?php echo ($vo["keyword"]); ?></td>
 					<td><?php echo (date("Y-m-d H:m:s",$vo["pubtime"])); ?></td>
 					<td><?php echo (isok($vo["ispush"])); ?></td>
