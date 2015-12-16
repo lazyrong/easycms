@@ -29,7 +29,6 @@
 				<th>模型类别</th>
 				<th>导航显示</th>
 				<th>审核状态</th>
-				<th>首页推荐</th>
 				<th>排序</th>
 				<th>操作</th>
 				
@@ -44,7 +43,6 @@
 					<td><if condition="$vo['modelid'] eq 0">文章模型<elseif condition="$vo['modelid'] eq 1" />名片模型<else />其他模型</if></td>
 					<td width="70" align="center"><{$vo.isshow|isok=###}></td>
 					<td width="70" align="center"><{$vo.isverify|isok=###}></td>
-					<td width="70" align="center"><{$vo.ispush|isok=###}></td>
 					<td >
 					<input onblur="updateSort(this);" type="text" style="width:30px;border:0;" name="<{$vo.id}>" value="<{$vo.sort}>" > 
 					</td>

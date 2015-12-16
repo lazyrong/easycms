@@ -22,6 +22,8 @@ class ArticlemAction extends CommonAction{
 		
 		//栏目id
 		$this->assign('catsid',$catsid);
+		$navTabUrl = "index/catsid/".$catsid;
+		$this->assign('navTabUrl',$navTabUrl);
 
 		$this->display();
 		return;
@@ -150,21 +152,6 @@ class ArticlemAction extends CommonAction{
 		return $bytes;
 	}
 
-	public function rubbish() {
-		//列表过滤器，生成查询Map对象
-		$map = $this->_search('Article');
-		if(method_exists($this, '_filter')) {
-			$this->_filter($map);
-		}
-		$map['islock']=1;
-		$model = D('Article');
-		if (!empty($model)) {
-			$this->_list($model, $map);
-		}
-		$this->display();
-		return;
-	}
-
 	
 
 	//添加搜索方法
@@ -236,7 +223,7 @@ class ArticlemAction extends CommonAction{
 		if($vo['modelid']==0){
 			$this->display('editNormal');
 		}else{
-			$this->display('editNormal');
+			$this->display('editAbout');
 		}
 	}
 	
@@ -260,6 +247,20 @@ class ArticlemAction extends CommonAction{
 		}
 	}
 	
+	public function rubbish() {
+		//列表过滤器，生成查询Map对象
+		$map = $this->_search('Article');
+		if(method_exists($this, '_filter')) {
+			$this->_filter($map);
+		}
+		$map['islock']=1;
+		$model = D('Article');
+		if (!empty($model)) {
+			$this->_list($model, $map);
+		}
+		$this->display();
+		return;
+	}
 
 	public function changeState() {
 		$model = M("Article"); // 实例化对象

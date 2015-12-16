@@ -137,9 +137,9 @@ border-left:5px solid #4C9ED9;
 #playBox .oUlplay li{ float:left;}
 
 #playBox .pre{ cursor:pointer; width:45px; height:45px; background:url(../images/l.png) no-repeat; 
-    position:absolute; top:145px; left:10px; z-index:10;}
+    position:absolute; top:175px; left:10px; z-index:10;}
 #playBox .next{ cursor:pointer; width:45px; height:45px; background:url(../images/r.png) no-repeat; 
-    position:absolute; top:145px; right:10px; z-index:10;}
+    position:absolute; top:175px; right:10px; z-index:10;}
 #playBox .smalltitle {width:750px; height:10px; position:absolute; bottom:15px; z-index:10}
 #playBox .smalltitle ul{ margin:0 auto; overflow: auto;}
 #playBox .smalltitle ul li{ width:10px; height:10px; margin:0 5px; border-radius:10px; background:#ffffff; 

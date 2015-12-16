@@ -33,9 +33,7 @@
 				<th width="30">分类</th>
 				<th width="40">关键词</th>
 				<th width="40">发布时间</th>
-				<th width="30">是否推荐</th>
-				<th width="30">是否幻灯</th>
-				<th width="30">是否允许评论</th>
+				<th width="50">是否首页推荐</th>
 				<th width="40">操作</th>
 			</tr>
 		</thead>
@@ -48,8 +46,6 @@
 					<td><{$vo.keyword}></td>
 					<td><{$vo.pubtime|date="Y-m-d H:m:s",###}></td>
 					<td><{$vo.ispush|isok=###}></td>
-					<td><{$vo.isslides|isok=###}></td>
-					<td><{$vo.iscommend|isok=###}></td>
 					<td><{$vo.islock|rubbish=$vo['article_id']}>
 					</td>
 				</tr>

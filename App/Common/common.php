@@ -45,13 +45,15 @@ function showReason($status, $id, $callback=""){
 	return $info;
 }
 
-function rubbish($status, $id, $callback=""){
+function rubbish($status, $id, $nd="", $callback=""){
+	if(!$nd) 
+		$nd="listrec_article";
 	switch ($status) {
 		case 1 :
 			$info = '<a href="__URL__/changeState/article_id/'.$id.'/islock/1/navTabId/listarticle1" target="ajaxTodo" callback="'.$callback.'">恢复显示</a>';
 			break;
 		case 0 :
-			$info = '<a href="__URL__/changeState/article_id/'.$id.'/islock/0/navTabId/listarticle" target="ajaxTodo" callback="'.$callback.'">加入回收站</a>';
+			$info = '<a href="__URL__/changeState/article_id/'.$id.'/islock/0/navTabId/'.$nd.'" target="ajaxTodo" callback="'.$callback.'">加入回收站</a>';
 			break;
 	}
 	return $info;

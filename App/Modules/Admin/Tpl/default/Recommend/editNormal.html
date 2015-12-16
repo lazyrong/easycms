@@ -17,11 +17,17 @@
 				<dd><input type="text" class="required"  style="width:100%" name="title" value="<{$vo.title}>"/></dd>
 			</dl>
 
-			<dl>
+		<dl>
 				<dt>是否首页推荐：</dt>
 				<dd>
 					<input type="radio" name="ispush" value="1" <if condition="$vo.ispush eq 1">checked</if>/>推荐
 					<input type="radio" name="ispush" value="0" <if condition="$vo.ispush eq 0">checked</if>/>不推荐
+				</dd>
+			</dl>
+				<dl>
+				<dt>排序：</dt>
+				<dd>
+					<input type="text" class="required" style="width:100%" name="sort"  value="<{$vo.sort}>"/>
 				</dd>
 			</dl>
 			<!-- 	<dl>

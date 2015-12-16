@@ -3,13 +3,19 @@
 		onsubmit="return validateCallback(this,dialogAjaxDone);"><?php  //窗体组件采用这个 iframeCallback(this, navTabAjaxDone); ?>
 		<input type="hidden" name="tid" value="<{$catinfo.id}>">
 		<div class="pageFormContent" layoutH="60">
+						<dt>是否首页推荐：</dt>
+				<dd>
+					<input type="radio" name="ispush" value="1" <if condition="$vo.ispush eq 1">checked</if>/>推荐
+					<input type="radio" name="ispush" value="0" <if condition="$vo.ispush eq 0">checked</if>/>不推荐
+				</dd>
+			</dl>
 			<dl  class="nowrap">
 				<dt>内容：</dt>
 				<dd>
 					<textarea id="elm1" name="content"  style="width:100%;display: none;" rows="20" >
 					</textarea>
 					<script>
-						$('#elm1').xheditor({upLinkUrl:"__URL__/upload",upLinkExt:"zip,rar,txt",upImgUrl:"__URL__/upload",upImgExt:"jpg,jpeg,gif,png",upFlashUrl:"__URL__/upload",upFlashExt:"swf",upMediaUrl:"__URL__/upload",upMediaExt:"avi",urlBase:'__ROOT__/'});
+						$('#elm1').xheditor({width:880,height:600,upLinkUrl:"__URL__/upload",upLinkExt:"zip,rar,txt",upImgUrl:"__URL__/upload",upImgExt:"jpg,jpeg,gif,png",upFlashUrl:"__URL__/upload",upFlashExt:"swf",upMediaUrl:"__URL__/upload",upMediaExt:"avi",urlBase:'__ROOT__/'});
 					</script>
 				</dd>
 			</dl>

@@ -1,5 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit();?>
-<!DOCTYPE html>
+<?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html>
 <html lang="zh-cn">
 
 <head>
@@ -256,7 +255,7 @@ href='<?php echo U('Nankai/List/index', array('catsid'=>$cats['id']));?>'<?php e
     </div>
     <!-- 合作媒体 end-->
     <!-- footer -->
-  <div class="footer">
+  <div class="footer" style="position:relative; z-index:100;">
 			<div class="wrapper">
 				<div class="footer-icons">
 					<div class="wx-img"><img width="130px" height="130px" src="../Public/images/wx.png"/></div>
