@@ -90,19 +90,11 @@ href='<?php echo U('Nankai/List/index', array('catsid'=>$cats['id']));?>'<?php e
                     <a href="#" class="fr" style="color:#4cc"> +MORE</a>
                 </div>
                 <ul class="news-list">
-                    <li class="first-child"><a target="_blank" href="#">苹果或将在明年春节前引入Apple</a></li>
-                    <li class=""><a target="_blank"  href="#">苹果或将在明年春节电子支付服务!</a></li>
-                    <li class=""><a href="#">苹果或将在明年春 Pay电子支付服务!</a></li>
-                    <li class="first-child"><a target="_blank" href="#">苹果或将在明年春节前引入Apple</a></li>
-                    <li class=""><a target="_blank"  href="#">苹果或将在明年春节电子支付服务!</a></li>
-                    <li class=""><a href="#">苹果或将在明年春 Pay电子支付服务!</a></li>
-                                        <li class=""><a href="#">苹果或将在明年春 Pay电子支付服务!</a></li>
-
+                <?php if(is_array($recArticle)): foreach($recArticle as $key=>$ra): ?><li class=""><a target="_blank" href="<?php echo U('Nankai/Article/index',array('articleid'=>$ra['article_id']));?>"><?php echo ($ra["title"]); ?></a></li><?php endforeach; endif; ?>
                 </ul>
             </div>
             <div class="fr banner-wrapper">
                 <!-- banner slider -->
-                <!-- http://44mkhh.axshare.com -->
                 <div id="playBox">
                     <div class="pre"></div>
                     <div class="next"></div>
@@ -138,27 +130,13 @@ href='<?php echo U('Nankai/List/index', array('catsid'=>$cats['id']));?>'<?php e
             </div>
             <div class="project-wrapper">
         <ul class="project-list">
-            <li class="project-unit">
-                <a href="#"><img src="../Public/images/project1.jpg" alt=""></a>
-                <p class="project-text">
-                    私银贵族是中国第一家互联网私人银行，专注于为高净值客户提供线上线下财富综合管理，以及研发高端定制的非金融产品，是高净值客户经理的业务撮合和移动展业平台。 
-                </p>
-            </li>
 
-
-                        <li class="project-unit">
-                <a href="#"><img src="../Public/images/project1.jpg" alt=""></a>
+        <?php if(is_array($recProject)): foreach($recProject as $key=>$rp): ?><li class="project-unit">
+                <a href="<?php echo U('Nankai/Article/index',array('articleid'=>$rp['article_id']));?>"><img src="../Public/images/project1.jpg" alt=""></a>
                 <p class="project-text">
-                    私银贵族是中国第一家互联网私人银行，专注于为高净值客户提供线上线下财富综合管理，以及研发高端定制的非金融产品，是高净值客户经理的业务撮合和移动展业平台。 
+                   <?php echo ($rp["summary"]); ?> 
                 </p>
-            </li>
-
-                        <li class="project-unit">
-                <a href="#"><img src="../Public/images/project1.jpg" alt=""></a>
-                <p class="project-text">
-                    私银贵族是中国第一家互联网私人银行，专注于为高净值客户提供线上线下财富综合管理，以及研发高端定制的非金融产品，是高净值客户经理的业务撮合和移动展业平台。 
-                </p>
-            </li>
+            </li><?php endforeach; endif; ?>
             </ul>
         </div>
         </div>
@@ -179,44 +157,19 @@ href='<?php echo U('Nankai/List/index', array('catsid'=>$cats['id']));?>'<?php e
                 </div>                
             </div>
 <div style="overflow:auto; width:1150px; margin:0 auto; margin-top:25px;">
-            <div class="angel-unit fl">
+        <!-- 投资机构填充 -->
+        <?php if(is_array($recOrg)): foreach($recOrg as $key=>$ro): ?><div class="angel-unit fl">
             <div class="angel-info">
-                <div class="image fl"><a href="#"><img src="../Public/images/avatar.jpg" alt=""></a></div>
+                <div class="image fl"><a href="<?php echo U('Nankai/Article/index',array('articleid'=>$ro['article_id']));?>"><img src="../Public/images/avatar.jpg" alt=""></a></div>
                 <div class="angel-name fl">
-                    <a href="#">你懂得</a>
-                    <p>你懂得</p>
+                    <a href="<?php echo U('Nankai/Article/index',array('articleid'=>$ro['article_id']));?>"><?php echo ($ro["title"]); ?></a>
+                    <p><?php echo ($ro["keyword"]); ?></p>
                 </div>    
             </div>
             <div class="angel-desc"><p><strong>简介：</strong>
-                你懂得你懂得你懂得你懂得你懂得你懂得你懂得你懂得你懂得你懂得你懂得你懂得你懂得你懂得你懂得
-            <a href="#">更多>></a></p></div>
-            </div>
-
-                        <div class="angel-unit fl">
-            <div class="angel-info">
-                <div class="image fl"><a href="#"><img src="../Public/images/avatar.jpg" alt=""></a></div>
-                <div class="angel-name fl">
-                    <a href="#">你懂得</a>
-                    <p>你懂得</p>
-                </div>    
-            </div>
-            <div class="angel-desc"><p><strong>简介：</strong>
-                你懂得你懂得你懂得你懂得你懂得你懂得你懂得你懂得你懂得你懂得你懂得你懂得你懂得你懂得你懂得
-            <a href="#">更多>></a></p></div>
-            </div>
-
-            <div class="angel-unit fl">
-            <div class="angel-info">
-                <div class="image fl"><a href="#"><img src="../Public/images/avatar.jpg" alt=""></a></div>
-                <div class="angel-name fl">
-                    <a href="#">你懂得</a>
-                    <p>你懂得</p>
-                </div>    
-            </div>
-            <div class="angel-desc"><p><strong>简介：</strong>
-                你懂得你懂得你懂得你懂得你懂得你懂得你懂得你懂得你懂得你懂得你懂得你懂得你懂得你懂得你懂得
-            <a href="#">更多>></a></p></div>
-            </div>
+                <?php echo ($ro["summary"]); ?>
+            <a href="<?php echo U('Nankai/Article/index',array('articleid'=>$ro['article_id']));?>">更多>></a></p></div>
+            </div><?php endforeach; endif; ?>
 </div>
 
         </div>
@@ -236,19 +189,7 @@ href='<?php echo U('Nankai/List/index', array('catsid'=>$cats['id']));?>'<?php e
 
             </div>
             <ul class="logo-list">
-              <li><a href="#" target="_blank"><img src="../Public/images/media-logo-1.jpg" alt=""/></a></li>
-              <li><a href="#" target="_blank"><img src="../Public/images/media-logo-1.jpg" alt=""/></a></li>
-              <li><a href="#" target="_blank"><img src="../Public/images/media-logo-1.jpg" alt=""/></a></li>
-              <li><a href="#" target="_blank"><img src="../Public/images/media-logo-1.jpg" alt=""/></a></li>
-              <li><a href="#" target="_blank"><img src="../Public/images/media-logo-1.jpg" alt=""/></a></li>
-              <li><a href="#" target="_blank"><img src="../Public/images/media-logo-1.jpg" alt=""/></a></li>
-              <li><a href="#" target="_blank"><img src="../Public/images/media-logo-1.jpg" alt=""/></a></li>
-              <li><a href="#" target="_blank"><img src="../Public/images/media-logo-1.jpg" alt=""/></a></li>
-              <li><a href="#" target="_blank"><img src="../Public/images/media-logo-1.jpg" alt=""/></a></li>
-              <li><a href="#" target="_blank"><img src="../Public/images/media-logo-1.jpg" alt=""/></a></li>
-              <li><a href="#" target="_blank"><img src="../Public/images/media-logo-1.jpg" alt=""/></a></li>
-              <li><a href="#" target="_blank"><img src="../Public/images/media-logo-1.jpg" alt=""/></a></li>
-
+                <?php if(is_array($recMedia)): foreach($recMedia as $key=>$rm): ?><li><a href="<?php echo U('Nankai/Article/index',array('articleid'=>$rm['article_id']));?>" target="_blank"><img src="../Public/images/media-logo-1.jpg" alt=""/></a></li><?php endforeach; endif; ?>
             </ul>
 
         </div>

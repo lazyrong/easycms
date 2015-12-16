@@ -39,7 +39,7 @@ class BannerAction extends CommonAction{
 		return $map;
 	}
 
-		public function edit() {
+	public function edit() {
 		$model = D('banner');
 		$id = $_REQUEST[$model->getPk()];
 		$vo = $model->find($id);

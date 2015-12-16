@@ -25,7 +25,12 @@ class ArticlemAction extends CommonAction{
 		$navTabUrl = "index/catsid/".$catsid;
 		$this->assign('navTabUrl',$navTabUrl);
 
-		$this->display();
+		if($catsid == 72 || $catsid == 73) {
+			$this->display("listCard");
+		} else {
+			$this->display("listNormal");
+		}
+		
 		return;
 	}
 
@@ -131,7 +136,6 @@ class ArticlemAction extends CommonAction{
 
 		echo "{'err':'".$this->jsonString($err)."','msg':".$msg."}";
 
-
 	}
 
 	function jsonString($str)
@@ -181,7 +185,7 @@ class ArticlemAction extends CommonAction{
 			$this->display('addNormal');
 			break;
 			case 1:
-			$this->display('addNormal');
+			$this->display('addCard');
 			break;
 			case 2:
 			$this->display('addAbout');
@@ -220,9 +224,15 @@ class ArticlemAction extends CommonAction{
 		$id = $_REQUEST[$model->getPk()];
 		$vo = $model->relation(true)->find($id);
 		$this->assign('vo', $vo);
-		if($vo['modelid']==0){
+
+		switch($vo['modelid']) {
+			case 0:
 			$this->display('editNormal');
-		}else{
+			break;
+			case 1:
+			$this->display('editCard');
+			break;
+			case 2:
 			$this->display('editAbout');
 		}
 	}

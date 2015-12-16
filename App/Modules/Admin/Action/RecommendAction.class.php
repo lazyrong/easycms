@@ -22,6 +22,57 @@ class RecommendAction extends CommonAction{
 		return;
 	}
 
+	public function rec_project() {
+		//列表过滤器，生成查询Map对象
+		$map = $this->_search('Article');
+		$arr = array_merge(getChildrenId('71'));
+		$map['tid'] = array('in',$arr);	
+		$map['ispush'] = 1;
+		$map['islock']=0;
+		$model = D('Article');
+		if (!empty($model)) {
+			$this->_list($model, $map,'sort','asc');
+		}
+
+		$this->assign('navTabUrl','rec_project');
+		$this->display('index');
+		return;
+	}
+
+		public function rec_org() {
+		//列表过滤器，生成查询Map对象
+		$map = $this->_search('Article');
+		$arr = array(87);
+		$map['tid'] = array('in',$arr);	
+		$map['ispush'] = 1;
+		$map['islock']=0;
+		$model = D('Article');
+		if (!empty($model)) {
+			$this->_list($model, $map,'sort','asc');
+		}
+
+		$this->assign('navTabUrl','rec_org');
+		$this->display('Articlem:listCard');
+		return;
+	}
+
+		public function rec_media() {
+		//列表过滤器，生成查询Map对象
+		$map = $this->_search('Article');
+		$arr = array(85);
+		$map['tid'] = array('in',$arr);	
+		$map['ispush'] = 1;
+		$map['islock']=0;
+		$model = D('Article');
+		if (!empty($model)) {
+			$this->_list($model, $map,'sort','asc');
+		}
+
+		$this->assign('navTabUrl','rec_org');
+		$this->display('Articlem:listCard');
+		return;
+	}
+
 	/**
 	 * 根据表单生成查询条件
 	 * 进行列表过滤
